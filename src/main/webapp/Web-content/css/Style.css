@@ -1,0 +1,92 @@
+.well-sm {
+    border: 2px solid black !important;
+    border-radius: 15px !important;
+    background-color: white !important;
+}
+
+.panel {
+    border: 2px solid black !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    margin-top: 10px !important;
+}
+
+.panel-heading {
+    border-bottom: 2px solid black !important;
+    padding: 7px 0px !important;
+    padding-left: 15px !important;
+    background-color: lightgray !important;
+}
+
+[type=search] {
+    position: relative;
+    text-align: right;
+    border-radius: 15px !important;
+}
+
+.glyphicon-search {
+    position: absolute;
+    top: 23px !important;
+    left: 5px !important;
+    z-index: 3;
+    font-size: 16px;
+}
+
+.panel-body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: auto;
+}
+
+.glyphicon-user {
+    font-size: 80px;
+    border: 2px solid black;
+}
+
+.fa {
+    font-size: 20px;
+    margin: 5px;
+    color: black;
+}
+
+.view_post {
+    float: right;
+    text-decoration: underline;
+}
+
+.grails {
+    float: right;
+}
+
+.dropdown {
+    float: right;
+}
+
+.btn.dropdown-toggle {
+    height: 27px;
+    margin-right: 3px;
+}
+
+.form-control {
+    border: 2px solid black !important;
+    height: 30px !important;
+}
+
+[type="submit"] {
+    height: 25px !important;
+    float: right !important;
+    border: 2px solid black !important;
+    border-radius: 5px !important;
+    text-align: center !important;
+    width: 100px !important;
+}
+
+.forgot_password {
+    text-decoration: underline;
+}
+
+[type=file] {
+    border: 2px solid black;
+    height: 25px !important;
+    width: 200px;
+}
