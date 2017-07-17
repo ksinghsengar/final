@@ -14,7 +14,7 @@
         <property name="show_sql">true</property>
 
         <!-- DB schema will be updated if needed -->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
 
         <mapping class="com.model.User"></mapping>
         <mapping class="com.model.Topic"></mapping>

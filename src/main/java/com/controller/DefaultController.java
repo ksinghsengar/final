@@ -11,4 +11,11 @@ public class DefaultController {
         ModelAndView modelAndView = new ModelAndView("home");
         return modelAndView;
     }
+
+    @RequestMapping("/topic")
+    public ModelAndView displaytopic() {
+        ModelAndView modelAndView = new ModelAndView("topic");
+        return modelAndView;
+    }
+
 }

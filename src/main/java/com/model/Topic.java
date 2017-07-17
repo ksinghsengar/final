@@ -1,10 +1,11 @@
 
 package com.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 @Entity
@@ -14,19 +15,22 @@ public class Topic {
     @Column(name = "TopicId")
     private int id;
     private String name;
+    @ManyToOne
+    private User createdBy;
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date datecreated;
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date lastupdated;
     @Enumerated(EnumType.STRING)
     private Visibility visibility;
 
-    @ManyToMany(mappedBy = "user_topicList")
-    List <User> topic_userList = new ArrayList<>();
+    @OneToMany(mappedBy = "topic")
+    private Set<Resource> topic_resourceList = new HashSet<>() ;
 
-    @OneToMany
-    private List<Resource> topic_resourceList = new ArrayList<Resource>() ;
-
-    @OneToMany
-    private List<Subscription> topic_subscriptionList = new ArrayList<Subscription>();
+    @OneToMany(mappedBy = "topic")
+    private Set<Subscription> topic_subscriptionList = new HashSet<>();
 
 
     public enum Visibility{
@@ -47,6 +51,14 @@ public class Topic {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 
     public Date getDatecreated() {
@@ -73,27 +85,19 @@ public class Topic {
         this.visibility = visibility;
     }
 
-    public List<User> getTopic_userList() {
-        return topic_userList;
-    }
-
-    public void setTopic_userList(List<User> topic_userList) {
-        this.topic_userList = topic_userList;
-    }
-
-    public List<Resource> getTopic_resourceList() {
+    public Set<Resource> getTopic_resourceList() {
         return topic_resourceList;
     }
 
-    public void setTopic_resourceList(List<Resource> topic_resourceList) {
+    public void setTopic_resourceList(Set<Resource> topic_resourceList) {
         this.topic_resourceList = topic_resourceList;
     }
 
-    public List<Subscription> getTopic_subscriptionList() {
+    public Set<Subscription> getTopic_subscriptionList() {
         return topic_subscriptionList;
     }
 
-    public void setTopic_subscriptionList(List<Subscription> topic_subscriptionList) {
+    public void setTopic_subscriptionList(Set<Subscription> topic_subscriptionList) {
         this.topic_subscriptionList = topic_subscriptionList;
     }
 
@@ -102,10 +106,10 @@ public class Topic {
         return "Topic{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", createdBy=" + createdBy +
                 ", datecreated=" + datecreated +
                 ", lastupdated=" + lastupdated +
                 ", visibility=" + visibility +
-                ", topic_userList=" + topic_userList +
                 ", topic_resourceList=" + topic_resourceList +
                 ", topic_subscriptionList=" + topic_subscriptionList +
                 '}';

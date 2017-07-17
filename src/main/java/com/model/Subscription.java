@@ -1,5 +1,7 @@
 package com.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,27 +14,21 @@ public class Subscription {
     @Column(name = "SubscriptionId")
     private Integer id;
 
-    @ManyToMany(mappedBy = "topic_subscriptionList")
-    private  List<Topic> subscription_topicList = new ArrayList<>();
+    @ManyToOne
+    private  Topic topic;
 
-    @ManyToMany(mappedBy = "user_subscriptionList")
-    private List<User> subscription_userList = new ArrayList<>();
+    @ManyToOne
+    private User user;
 
     @Enumerated(EnumType.STRING)
     private Seriousness seriousness;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     Date dateCreated;
 
     public enum Seriousness{
         SERIOUS, VERY_SERIOUS, CASUAL;
-    }
-
-    public Seriousness getSeriousness() {
-        return seriousness;
-    }
-
-    public void setSeriousness(Seriousness seriousness) {
-        this.seriousness = seriousness;
     }
 
     public Integer getId() {
@@ -43,20 +39,28 @@ public class Subscription {
         this.id = id;
     }
 
-    public List<Topic> getSubscription_topicList() {
-        return subscription_topicList;
+    public Topic getTopic() {
+        return topic;
     }
 
-    public void setSubscription_topicList(List<Topic> subscription_topicList) {
-        this.subscription_topicList = subscription_topicList;
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 
-    public List<User> getSubscription_userList() {
-        return subscription_userList;
+    public User getUser() {
+        return user;
     }
 
-    public void setSubscription_userList(List<User> subscription_userList) {
-        this.subscription_userList = subscription_userList;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Seriousness getSeriousness() {
+        return seriousness;
+    }
+
+    public void setSeriousness(Seriousness seriousness) {
+        this.seriousness = seriousness;
     }
 
     public Date getDateCreated() {
@@ -71,8 +75,8 @@ public class Subscription {
     public String toString() {
         return "Subscription{" +
                 "id=" + id +
-                ", subscription_topicList=" + subscription_topicList +
-                ", subscription_userList=" + subscription_userList +
+                ", topic=" + topic +
+                ", user=" + user +
                 ", seriousness=" + seriousness +
                 ", dateCreated=" + dateCreated +
                 '}';

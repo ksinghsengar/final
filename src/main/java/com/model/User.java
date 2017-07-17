@@ -1,13 +1,13 @@
 package com.model;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.annotation.processing.SupportedSourceVersion;
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class User {
@@ -32,23 +32,27 @@ public class User {
     @Column(nullable = false)
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean active;
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date dateCreated;
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date lastUpdated;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    List<Topic> user_topicList = new ArrayList<Topic>();
+    @OneToMany(mappedBy = "createdBy")
+    Set<Topic> topicSet = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    List<Resource> user_resourceList = new ArrayList<Resource>();
+    @OneToMany(mappedBy = "user")
+    Set<Subscription> subscriptionSet = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    List<ReadingItem> user_readingItemList  = new ArrayList<ReadingItem>();
+    @OneToMany(mappedBy = "createdBy")
+    Set <Resource> resourceSet = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    List<ResourceRating> user_resourceRatingList = new ArrayList<ResourceRating>();
+    @OneToOne
+    private  ResourceRating resourceRating;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    List<Subscription> user_subscriptionList = new ArrayList<Subscription>();
+    @OneToOne
+    private ReadingItem readingItem;
 
     public int getId() {
         return id;
@@ -138,44 +142,44 @@ public class User {
         this.lastUpdated = lastUpdated;
     }
 
-    public List<Topic> getUser_topicList() {
-        return user_topicList;
+    public Set<Topic> getTopicSet() {
+        return topicSet;
     }
 
-    public void setUser_topicList(List<Topic> user_topicList) {
-        this.user_topicList = user_topicList;
+    public void setTopicSet(Set<Topic> topicSet) {
+        this.topicSet = topicSet;
     }
 
-    public List<Resource> getUser_resourceList() {
-        return user_resourceList;
+    public Set<Subscription> getSubscriptionSet() {
+        return subscriptionSet;
     }
 
-    public void setUser_resourceList(List<Resource> user_resourceList) {
-        this.user_resourceList = user_resourceList;
+    public void setSubscriptionSet(Set<Subscription> subscriptionSet) {
+        this.subscriptionSet = subscriptionSet;
     }
 
-    public List<ReadingItem> getUser_readingItemList() {
-        return user_readingItemList;
+    public Set<Resource> getResourceSet() {
+        return resourceSet;
     }
 
-    public void setUser_readingItemList(List<ReadingItem> user_readingItemList) {
-        this.user_readingItemList = user_readingItemList;
+    public void setResourceSet(Set<Resource> resourceSet) {
+        this.resourceSet = resourceSet;
     }
 
-    public List<ResourceRating> getUser_resourceRatingList() {
-        return user_resourceRatingList;
+    public ResourceRating getResourceRating() {
+        return resourceRating;
     }
 
-    public void setUser_resourceRatingList(List<ResourceRating> user_resourceRatingList) {
-        this.user_resourceRatingList = user_resourceRatingList;
+    public void setResourceRating(ResourceRating resourceRating) {
+        this.resourceRating = resourceRating;
     }
 
-    public List<Subscription> getUser_subscriptionList() {
-        return user_subscriptionList;
+    public ReadingItem getReadingItem() {
+        return readingItem;
     }
 
-    public void setUser_subscriptionList(List<Subscription> user_subscriptionList) {
-        this.user_subscriptionList = user_subscriptionList;
+    public void setReadingItem(ReadingItem readingItem) {
+        this.readingItem = readingItem;
     }
 
     @Override
@@ -192,11 +196,11 @@ public class User {
                 ", active=" + active +
                 ", dateCreated=" + dateCreated +
                 ", lastUpdated=" + lastUpdated +
-                ", user_topicList=" + user_topicList +
-                ", user_resourceList=" + user_resourceList +
-                ", user_readingItemList=" + user_readingItemList +
-                ", user_resourceRatingList=" + user_resourceRatingList +
-                ", user_subscriptionList=" + user_subscriptionList +
+                ", topicSet=" + topicSet +
+                ", subscriptionSet=" + subscriptionSet +
+                ", resourceSet=" + resourceSet +
+                ", resourceRating=" + resourceRating +
+                ", readingItem=" + readingItem +
                 '}';
     }
 }

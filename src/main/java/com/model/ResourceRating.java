@@ -11,11 +11,11 @@ public class ResourceRating {
     @Column(name = "ResourceRatingId")
     private Integer id;
 
-    @ManyToMany(mappedBy = "resource_resourceRatingList")
-    List <Resource> resourceRating_resourceList = new ArrayList<>();
+   @OneToOne
+   private User user;
 
-    @ManyToMany(mappedBy = "user_resourceRatingList")
-    List<User> resourceRating_userList = new ArrayList<>();
+   @OneToOne
+   private Resource resource;
 
     private Integer score;
 
@@ -27,20 +27,20 @@ public class ResourceRating {
         this.id = id;
     }
 
-    public List<Resource> getResourceRating_resourceList() {
-        return resourceRating_resourceList;
+    public User getUser() {
+        return user;
     }
 
-    public void setResourceRating_resourceList(List<Resource> resourceRating_resourceList) {
-        this.resourceRating_resourceList = resourceRating_resourceList;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public List<User> getResourceRating_userList() {
-        return resourceRating_userList;
+    public Resource getResource() {
+        return resource;
     }
 
-    public void setResourceRating_userList(List<User> resourceRating_userList) {
-        this.resourceRating_userList = resourceRating_userList;
+    public void setResource(Resource resource) {
+        this.resource = resource;
     }
 
     public Integer getScore() {
@@ -55,8 +55,8 @@ public class ResourceRating {
     public String toString() {
         return "ResourceRating{" +
                 "id=" + id +
-                ", resourceRating_resourceList=" + resourceRating_resourceList +
-                ", resourceRating_userList=" + resourceRating_userList +
+                ", user=" + user +
+                ", resource=" + resource +
                 ", score=" + score +
                 '}';
     }

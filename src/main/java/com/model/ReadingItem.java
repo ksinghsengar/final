@@ -1,5 +1,6 @@
 package com.model;
 
+import com.sun.org.apache.regexp.internal.RE;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -12,10 +13,13 @@ public class ReadingItem{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ReadingItemId")
     private Integer id;
-    @ManyToMany(mappedBy = "resource_readingItemList")
-    private List<Resource> readingItem_resourceList = new ArrayList<>();
-    @ManyToMany(mappedBy = "user_readingItemList")
-    List<User> readingItem_userList = new ArrayList<>();
+
+    @OneToOne
+    private User user;
+
+    @OneToOne
+    private Resource resource;
+
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private  Boolean isRead;
 
@@ -27,20 +31,20 @@ public class ReadingItem{
         this.id = id;
     }
 
-    public List<Resource> getReadingItem_resourceList() {
-        return readingItem_resourceList;
+    public User getUser() {
+        return user;
     }
 
-    public void setReadingItem_resourceList(List<Resource> readingItem_resourceList) {
-        this.readingItem_resourceList = readingItem_resourceList;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public List<User> getReadingItem_userList() {
-        return readingItem_userList;
+    public Resource getResource() {
+        return resource;
     }
 
-    public void setReadingItem_userList(List<User> readingItem_userList) {
-        this.readingItem_userList = readingItem_userList;
+    public void setResource(Resource resource) {
+        this.resource = resource;
     }
 
     public Boolean getRead() {
@@ -55,8 +59,8 @@ public class ReadingItem{
     public String toString() {
         return "ReadingItem{" +
                 "id=" + id +
-                ", readingItem_resourceList=" + readingItem_resourceList +
-                ", readingItem_userList=" + readingItem_userList +
+                ", user=" + user +
+                ", resource=" + resource +
                 ", isRead=" + isRead +
                 '}';
     }
