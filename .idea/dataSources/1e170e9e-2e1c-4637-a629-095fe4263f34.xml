@@ -28,561 +28,417 @@
     <routine id="18" parent="2" name="totalsalary">
       <RoutineKind>function</RoutineKind>
     </routine>
-    <table id="19" parent="14" name="documentresource"/>
-    <table id="20" parent="14" name="linkresource"/>
-    <table id="21" parent="14" name="readingitem"/>
-    <table id="22" parent="14" name="resource"/>
-    <table id="23" parent="14" name="resource_readingitem"/>
-    <table id="24" parent="14" name="resource_resourcerating"/>
-    <table id="25" parent="14" name="resourcerating"/>
-    <table id="26" parent="14" name="subscription"/>
-    <table id="27" parent="14" name="topic"/>
-    <table id="28" parent="14" name="topic_resource"/>
-    <table id="29" parent="14" name="topic_subscription"/>
-    <table id="30" parent="14" name="user"/>
-    <table id="31" parent="14" name="user_readingitem"/>
-    <table id="32" parent="14" name="user_resource"/>
-    <table id="33" parent="14" name="user_resourcerating"/>
-    <table id="34" parent="14" name="user_subscription"/>
-    <table id="35" parent="14" name="user_topic"/>
-    <column id="36" parent="15" name="employee_number">
+    <table id="19" parent="14" name="readingitem"/>
+    <table id="20" parent="14" name="resource"/>
+    <table id="21" parent="14" name="resourcerating"/>
+    <table id="22" parent="14" name="subscription"/>
+    <table id="23" parent="14" name="topic"/>
+    <table id="24" parent="14" name="user"/>
+    <column id="25" parent="15" name="employee_number">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="37" parent="15" name="employee_name">
+    <column id="26" parent="15" name="employee_name">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="38" parent="15" name="salary">
+    <column id="27" parent="15" name="salary">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="39" parent="15" name="dept">
+    <column id="28" parent="15" name="dept">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <key id="40" parent="15" name="PRIMARY">
+    <key id="29" parent="15" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>employee_number</ColNames>
       <Primary>1</Primary>
     </key>
-    <trigger id="41" parent="15" name="update_on_salary_reduction">
+    <trigger id="30" parent="15" name="update_on_salary_reduction">
       <Turn>after-row</Turn>
       <Events>U</Events>
     </trigger>
-    <column id="42" parent="16" name="employee_name">
+    <column id="31" parent="16" name="employee_name">
       <Position>1</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="43" parent="16" name="update_by">
+    <column id="32" parent="16" name="update_by">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="44" parent="16" name="changed_salary">
+    <column id="33" parent="16" name="changed_salary">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="45" parent="16" name="update_date">
+    <column id="34" parent="16" name="update_date">
       <Position>4</Position>
       <DataType>date|0</DataType>
     </column>
-    <argument id="46" parent="17" name="salary1">
+    <argument id="35" parent="17" name="salary1">
       <DataType>int(11)|0</DataType>
     </argument>
-    <argument id="47" parent="17" name="id">
+    <argument id="36" parent="17" name="id">
       <DataType>int(11)|0</DataType>
     </argument>
-    <argument id="48" parent="18">
+    <argument id="37" parent="18">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>int(11)|0</DataType>
     </argument>
-    <argument id="49" parent="18" name="deptname">
+    <argument id="38" parent="18" name="deptname">
       <DataType>varchar(50)|0</DataType>
     </argument>
-    <column id="50" parent="19" name="filePath">
-      <Position>1</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <column id="51" parent="19" name="ResourceId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="52" parent="19" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ResourceId</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="53" parent="19" name="FK_cypvsqxxrisindbtlaw37f46v">
-      <ColNames>ResourceId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>resource</RefTableName>
-      <RefColNames>ResourceId</RefColNames>
-    </foreign-key>
-    <column id="54" parent="20" name="url">
-      <Position>1</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <column id="55" parent="20" name="ResourceId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="56" parent="20" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ResourceId</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="57" parent="20" name="FK_gljdhr2n9po269d75pnmtdley">
-      <ColNames>ResourceId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>resource</RefTableName>
-      <RefColNames>ResourceId</RefColNames>
-    </foreign-key>
-    <column id="58" parent="21" name="ReadingItemId">
+    <column id="39" parent="19" name="ReadingItemId">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="59" parent="21" name="isRead">
+    <column id="40" parent="19" name="isRead">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="60" parent="21" name="PRIMARY">
+    <column id="41" parent="19" name="resource_ResourceId">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="42" parent="19" name="user_UserId">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="43" parent="19" name="FK_c9ull5e4ssg55eudqjvbqufex">
+      <ColNames>resource_ResourceId</ColNames>
+    </index>
+    <index id="44" parent="19" name="FK_r9oo5qq68irh2ihtrgiyqiake">
+      <ColNames>user_UserId</ColNames>
+    </index>
+    <key id="45" parent="19" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ReadingItemId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="61" parent="22" name="ResourceId">
+    <foreign-key id="46" parent="19" name="FK_c9ull5e4ssg55eudqjvbqufex">
+      <ColNames>resource_ResourceId</ColNames>
+      <RefSchemaName>linksharingdb</RefSchemaName>
+      <RefTableName>resource</RefTableName>
+      <RefColNames>ResourceId</RefColNames>
+    </foreign-key>
+    <foreign-key id="47" parent="19" name="FK_r9oo5qq68irh2ihtrgiyqiake">
+      <ColNames>user_UserId</ColNames>
+      <RefSchemaName>linksharingdb</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>UserId</RefColNames>
+    </foreign-key>
+    <column id="48" parent="20" name="DTYPE">
       <Position>1</Position>
+      <DataType>varchar(31)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="20" name="ResourceId">
+      <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="62" parent="22" name="dateCreated">
-      <Position>2</Position>
+    <column id="50" parent="20" name="dateCreated">
+      <Position>3</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="63" parent="22" name="description">
-      <Position>3</Position>
+    <column id="51" parent="20" name="description">
+      <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="64" parent="22" name="lastUpdated">
-      <Position>4</Position>
+    <column id="52" parent="20" name="lastUpdated">
+      <Position>5</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="65" parent="22" name="topic_TopicId">
-      <Position>5</Position>
+    <column id="53" parent="20" name="url">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="54" parent="20" name="filePath">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="55" parent="20" name="createdBy_UserId">
+      <Position>8</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="66" parent="22" name="FK_cnassv2u48ukp3cuq39eis9ft">
+    <column id="56" parent="20" name="readingItem_ReadingItemId">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="57" parent="20" name="resourceRating_ResourceRatingId">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="58" parent="20" name="topic_TopicId">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="59" parent="20" name="FK_32rguh1pv7cu026pbdp9mv09d">
+      <ColNames>readingItem_ReadingItemId</ColNames>
+    </index>
+    <index id="60" parent="20" name="FK_cnassv2u48ukp3cuq39eis9ft">
       <ColNames>topic_TopicId</ColNames>
     </index>
-    <key id="67" parent="22" name="PRIMARY">
+    <index id="61" parent="20" name="FK_hyq19020oiew8ixai41grwuvg">
+      <ColNames>resourceRating_ResourceRatingId</ColNames>
+    </index>
+    <index id="62" parent="20" name="FK_iphbjobbw4fjcvme8tjop8qta">
+      <ColNames>createdBy_UserId</ColNames>
+    </index>
+    <key id="63" parent="20" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ResourceId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="68" parent="22" name="FK_cnassv2u48ukp3cuq39eis9ft">
+    <foreign-key id="64" parent="20" name="FK_iphbjobbw4fjcvme8tjop8qta">
+      <ColNames>createdBy_UserId</ColNames>
+      <RefSchemaName>linksharingdb</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>UserId</RefColNames>
+    </foreign-key>
+    <foreign-key id="65" parent="20" name="FK_32rguh1pv7cu026pbdp9mv09d">
+      <ColNames>readingItem_ReadingItemId</ColNames>
+      <RefSchemaName>linksharingdb</RefSchemaName>
+      <RefTableName>readingitem</RefTableName>
+      <RefColNames>ReadingItemId</RefColNames>
+    </foreign-key>
+    <foreign-key id="66" parent="20" name="FK_hyq19020oiew8ixai41grwuvg">
+      <ColNames>resourceRating_ResourceRatingId</ColNames>
+      <RefSchemaName>linksharingdb</RefSchemaName>
+      <RefTableName>resourcerating</RefTableName>
+      <RefColNames>ResourceRatingId</RefColNames>
+    </foreign-key>
+    <foreign-key id="67" parent="20" name="FK_cnassv2u48ukp3cuq39eis9ft">
       <ColNames>topic_TopicId</ColNames>
       <RefSchemaName>linksharingdb</RefSchemaName>
       <RefTableName>topic</RefTableName>
       <RefColNames>TopicId</RefColNames>
     </foreign-key>
-    <column id="69" parent="23" name="readingItem_resourceList_ResourceId">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="70" parent="23" name="resource_readingItemList_ReadingItemId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="71" parent="23" name="FK_9kdna90rtoarovca8a8s5xk26">
-      <ColNames>readingItem_resourceList_ResourceId</ColNames>
-    </index>
-    <index id="72" parent="23" name="FK_ncbeheds8ra09ixbnbcfodg5n">
-      <ColNames>resource_readingItemList_ReadingItemId</ColNames>
-    </index>
-    <foreign-key id="73" parent="23" name="FK_9kdna90rtoarovca8a8s5xk26">
-      <ColNames>readingItem_resourceList_ResourceId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>resource</RefTableName>
-      <RefColNames>ResourceId</RefColNames>
-    </foreign-key>
-    <foreign-key id="74" parent="23" name="FK_ncbeheds8ra09ixbnbcfodg5n">
-      <ColNames>resource_readingItemList_ReadingItemId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>readingitem</RefTableName>
-      <RefColNames>ReadingItemId</RefColNames>
-    </foreign-key>
-    <column id="75" parent="24" name="resourceRating_resourceList_ResourceId">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="76" parent="24" name="resource_resourceRatingList_ResourceRatingId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="77" parent="24" name="FK_d7k8x6iyrsrjlpert7enyhdoi">
-      <ColNames>resource_resourceRatingList_ResourceRatingId</ColNames>
-    </index>
-    <index id="78" parent="24" name="FK_p6wwcn5sro2on5yoartstjwde">
-      <ColNames>resourceRating_resourceList_ResourceId</ColNames>
-    </index>
-    <foreign-key id="79" parent="24" name="FK_p6wwcn5sro2on5yoartstjwde">
-      <ColNames>resourceRating_resourceList_ResourceId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>resource</RefTableName>
-      <RefColNames>ResourceId</RefColNames>
-    </foreign-key>
-    <foreign-key id="80" parent="24" name="FK_d7k8x6iyrsrjlpert7enyhdoi">
-      <ColNames>resource_resourceRatingList_ResourceRatingId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>resourcerating</RefTableName>
-      <RefColNames>ResourceRatingId</RefColNames>
-    </foreign-key>
-    <column id="81" parent="25" name="ResourceRatingId">
+    <column id="68" parent="21" name="ResourceRatingId">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="82" parent="25" name="score">
+    <column id="69" parent="21" name="score">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="83" parent="25" name="PRIMARY">
+    <column id="70" parent="21" name="resource_ResourceId">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="71" parent="21" name="user_UserId">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="72" parent="21" name="FK_6r0kgj33ghomke08l2opyiaa2">
+      <ColNames>resource_ResourceId</ColNames>
+    </index>
+    <index id="73" parent="21" name="FK_m0a5w0rajyd5haoklgpmjhlk5">
+      <ColNames>user_UserId</ColNames>
+    </index>
+    <key id="74" parent="21" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ResourceRatingId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="84" parent="26" name="SubscriptionId">
+    <foreign-key id="75" parent="21" name="FK_6r0kgj33ghomke08l2opyiaa2">
+      <ColNames>resource_ResourceId</ColNames>
+      <RefSchemaName>linksharingdb</RefSchemaName>
+      <RefTableName>resource</RefTableName>
+      <RefColNames>ResourceId</RefColNames>
+    </foreign-key>
+    <foreign-key id="76" parent="21" name="FK_m0a5w0rajyd5haoklgpmjhlk5">
+      <ColNames>user_UserId</ColNames>
+      <RefSchemaName>linksharingdb</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>UserId</RefColNames>
+    </foreign-key>
+    <column id="77" parent="22" name="SubscriptionId">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="85" parent="26" name="dateCreated">
+    <column id="78" parent="22" name="dateCreated">
       <Position>2</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="86" parent="26" name="seriousness">
+    <column id="79" parent="22" name="seriousness">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="87" parent="26" name="PRIMARY">
+    <column id="80" parent="22" name="topic_TopicId">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="81" parent="22" name="user_UserId">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="82" parent="22" name="FK_jogk3laay26hfix2hkqcxb22x">
+      <ColNames>user_UserId</ColNames>
+    </index>
+    <index id="83" parent="22" name="FK_rc13d1fxxo7uc4ms9g65280v3">
+      <ColNames>topic_TopicId</ColNames>
+    </index>
+    <key id="84" parent="22" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>SubscriptionId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="88" parent="27" name="TopicId">
+    <foreign-key id="85" parent="22" name="FK_rc13d1fxxo7uc4ms9g65280v3">
+      <ColNames>topic_TopicId</ColNames>
+      <RefSchemaName>linksharingdb</RefSchemaName>
+      <RefTableName>topic</RefTableName>
+      <RefColNames>TopicId</RefColNames>
+    </foreign-key>
+    <foreign-key id="86" parent="22" name="FK_jogk3laay26hfix2hkqcxb22x">
+      <ColNames>user_UserId</ColNames>
+      <RefSchemaName>linksharingdb</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>UserId</RefColNames>
+    </foreign-key>
+    <column id="87" parent="23" name="TopicId">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="89" parent="27" name="datecreated">
+    <column id="88" parent="23" name="datecreated">
       <Position>2</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="90" parent="27" name="lastupdated">
+    <column id="89" parent="23" name="lastupdated">
       <Position>3</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="91" parent="27" name="name">
+    <column id="90" parent="23" name="name">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="92" parent="27" name="visibility">
+    <column id="91" parent="23" name="visibility">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="93" parent="27" name="PRIMARY">
+    <column id="92" parent="23" name="createdBy_UserId">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="93" parent="23" name="FK_9f76buhe9bmhscw8gjmxj1fsu">
+      <ColNames>createdBy_UserId</ColNames>
+    </index>
+    <key id="94" parent="23" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>TopicId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="94" parent="28" name="Topic_TopicId">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="95" parent="28" name="topic_resourceList_ResourceId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="96" parent="28" name="FK_bx3ogdmn613ji7v9pptmbmend">
-      <ColNames>Topic_TopicId</ColNames>
-    </index>
-    <index id="97" parent="28" name="UK_inoltj9pm3pcal1wc2416n407">
-      <ColNames>topic_resourceList_ResourceId</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="98" parent="28" name="UK_inoltj9pm3pcal1wc2416n407">
-      <ColNames>topic_resourceList_ResourceId</ColNames>
-      <UnderlyingIndexName>UK_inoltj9pm3pcal1wc2416n407</UnderlyingIndexName>
-    </key>
-    <foreign-key id="99" parent="28" name="FK_bx3ogdmn613ji7v9pptmbmend">
-      <ColNames>Topic_TopicId</ColNames>
+    <foreign-key id="95" parent="23" name="FK_9f76buhe9bmhscw8gjmxj1fsu">
+      <ColNames>createdBy_UserId</ColNames>
       <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>topic</RefTableName>
-      <RefColNames>TopicId</RefColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>UserId</RefColNames>
     </foreign-key>
-    <foreign-key id="100" parent="28" name="FK_inoltj9pm3pcal1wc2416n407">
-      <ColNames>topic_resourceList_ResourceId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>resource</RefTableName>
-      <RefColNames>ResourceId</RefColNames>
-    </foreign-key>
-    <column id="101" parent="29" name="subscription_topicList_TopicId">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="102" parent="29" name="topic_subscriptionList_SubscriptionId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="103" parent="29" name="FK_kc9rkneyndfarhqmjc1u4680j">
-      <ColNames>subscription_topicList_TopicId</ColNames>
-    </index>
-    <index id="104" parent="29" name="UK_9ngwyylsd6cdaxjrb9935ibmg">
-      <ColNames>topic_subscriptionList_SubscriptionId</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="105" parent="29" name="UK_9ngwyylsd6cdaxjrb9935ibmg">
-      <ColNames>topic_subscriptionList_SubscriptionId</ColNames>
-      <UnderlyingIndexName>UK_9ngwyylsd6cdaxjrb9935ibmg</UnderlyingIndexName>
-    </key>
-    <foreign-key id="106" parent="29" name="FK_kc9rkneyndfarhqmjc1u4680j">
-      <ColNames>subscription_topicList_TopicId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>topic</RefTableName>
-      <RefColNames>TopicId</RefColNames>
-    </foreign-key>
-    <foreign-key id="107" parent="29" name="FK_9ngwyylsd6cdaxjrb9935ibmg">
-      <ColNames>topic_subscriptionList_SubscriptionId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>subscription</RefTableName>
-      <RefColNames>SubscriptionId</RefColNames>
-    </foreign-key>
-    <column id="108" parent="30" name="UserId">
+    <column id="96" parent="24" name="UserId">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="109" parent="30" name="active">
+    <column id="97" parent="24" name="active">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="110" parent="30" name="admin">
+    <column id="98" parent="24" name="admin">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="111" parent="30" name="dateCreated">
+    <column id="99" parent="24" name="dateCreated">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="112" parent="30" name="email">
+    <column id="100" parent="24" name="email">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="113" parent="30" name="firstName">
+    <column id="101" parent="24" name="firstName">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="114" parent="30" name="lastName">
+    <column id="102" parent="24" name="lastName">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="115" parent="30" name="lastUpdated">
+    <column id="103" parent="24" name="lastUpdated">
       <Position>8</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="116" parent="30" name="password">
+    <column id="104" parent="24" name="password">
       <Position>9</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="117" parent="30" name="photo">
+    <column id="105" parent="24" name="photo">
       <Position>10</Position>
       <DataType>mediumblob|0</DataType>
     </column>
-    <column id="118" parent="30" name="userName">
+    <column id="106" parent="24" name="userName">
       <Position>11</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <index id="119" parent="30" name="UK_e6gkqunxajvyxl5uctpl2vl2p">
+    <column id="107" parent="24" name="readingItem_ReadingItemId">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="108" parent="24" name="resourceRating_ResourceRatingId">
+      <Position>13</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="109" parent="24" name="FK_2w5eymy4g80uncryn4w9s9129">
+      <ColNames>readingItem_ReadingItemId</ColNames>
+    </index>
+    <index id="110" parent="24" name="FK_622hfjb9km83r7ufa3k0ykayu">
+      <ColNames>resourceRating_ResourceRatingId</ColNames>
+    </index>
+    <index id="111" parent="24" name="UK_e6gkqunxajvyxl5uctpl2vl2p">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="120" parent="30" name="UK_hl8fftx66p59oqgkkcfit3eay">
+    <index id="112" parent="24" name="UK_hl8fftx66p59oqgkkcfit3eay">
       <ColNames>userName</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="121" parent="30" name="PRIMARY">
+    <key id="113" parent="24" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>UserId</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="122" parent="30" name="UK_e6gkqunxajvyxl5uctpl2vl2p">
+    <key id="114" parent="24" name="UK_e6gkqunxajvyxl5uctpl2vl2p">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>UK_e6gkqunxajvyxl5uctpl2vl2p</UnderlyingIndexName>
     </key>
-    <key id="123" parent="30" name="UK_hl8fftx66p59oqgkkcfit3eay">
+    <key id="115" parent="24" name="UK_hl8fftx66p59oqgkkcfit3eay">
       <ColNames>userName</ColNames>
       <UnderlyingIndexName>UK_hl8fftx66p59oqgkkcfit3eay</UnderlyingIndexName>
     </key>
-    <column id="124" parent="31" name="readingItem_userList_UserId">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="125" parent="31" name="user_readingItemList_ReadingItemId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="126" parent="31" name="FK_6nv3cchujn7kje4nhndewcccr">
-      <ColNames>user_readingItemList_ReadingItemId</ColNames>
-    </index>
-    <index id="127" parent="31" name="FK_q0bi3mqmufd2r36ggvp83h93f">
-      <ColNames>readingItem_userList_UserId</ColNames>
-    </index>
-    <foreign-key id="128" parent="31" name="FK_q0bi3mqmufd2r36ggvp83h93f">
-      <ColNames>readingItem_userList_UserId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>user</RefTableName>
-      <RefColNames>UserId</RefColNames>
-    </foreign-key>
-    <foreign-key id="129" parent="31" name="FK_6nv3cchujn7kje4nhndewcccr">
-      <ColNames>user_readingItemList_ReadingItemId</ColNames>
+    <foreign-key id="116" parent="24" name="FK_2w5eymy4g80uncryn4w9s9129">
+      <ColNames>readingItem_ReadingItemId</ColNames>
       <RefSchemaName>linksharingdb</RefSchemaName>
       <RefTableName>readingitem</RefTableName>
       <RefColNames>ReadingItemId</RefColNames>
     </foreign-key>
-    <column id="130" parent="32" name="resource_userList_UserId">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="131" parent="32" name="user_resourceList_ResourceId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="132" parent="32" name="FK_9hlt09a22c9ap8yhb7umoay9k">
-      <ColNames>user_resourceList_ResourceId</ColNames>
-    </index>
-    <index id="133" parent="32" name="FK_cukcfioikjw7ptgmaum19uj87">
-      <ColNames>resource_userList_UserId</ColNames>
-    </index>
-    <foreign-key id="134" parent="32" name="FK_cukcfioikjw7ptgmaum19uj87">
-      <ColNames>resource_userList_UserId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>user</RefTableName>
-      <RefColNames>UserId</RefColNames>
-    </foreign-key>
-    <foreign-key id="135" parent="32" name="FK_9hlt09a22c9ap8yhb7umoay9k">
-      <ColNames>user_resourceList_ResourceId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>resource</RefTableName>
-      <RefColNames>ResourceId</RefColNames>
-    </foreign-key>
-    <column id="136" parent="33" name="resourceRating_userList_UserId">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="137" parent="33" name="user_resourceRatingList_ResourceRatingId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="138" parent="33" name="FK_idrx1heeemq1r6j77699ly06w">
-      <ColNames>user_resourceRatingList_ResourceRatingId</ColNames>
-    </index>
-    <index id="139" parent="33" name="FK_nmalv4fpqxlyemohyv8klef1p">
-      <ColNames>resourceRating_userList_UserId</ColNames>
-    </index>
-    <foreign-key id="140" parent="33" name="FK_nmalv4fpqxlyemohyv8klef1p">
-      <ColNames>resourceRating_userList_UserId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>user</RefTableName>
-      <RefColNames>UserId</RefColNames>
-    </foreign-key>
-    <foreign-key id="141" parent="33" name="FK_idrx1heeemq1r6j77699ly06w">
-      <ColNames>user_resourceRatingList_ResourceRatingId</ColNames>
+    <foreign-key id="117" parent="24" name="FK_622hfjb9km83r7ufa3k0ykayu">
+      <ColNames>resourceRating_ResourceRatingId</ColNames>
       <RefSchemaName>linksharingdb</RefSchemaName>
       <RefTableName>resourcerating</RefTableName>
       <RefColNames>ResourceRatingId</RefColNames>
-    </foreign-key>
-    <column id="142" parent="34" name="subscription_userList_UserId">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="143" parent="34" name="user_subscriptionList_SubscriptionId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="144" parent="34" name="FK_b1ajap9gwcjw2ahjymajp3sfx">
-      <ColNames>subscription_userList_UserId</ColNames>
-    </index>
-    <index id="145" parent="34" name="FK_pd09fhlelgup4s1pqjycrcolk">
-      <ColNames>user_subscriptionList_SubscriptionId</ColNames>
-    </index>
-    <foreign-key id="146" parent="34" name="FK_b1ajap9gwcjw2ahjymajp3sfx">
-      <ColNames>subscription_userList_UserId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>user</RefTableName>
-      <RefColNames>UserId</RefColNames>
-    </foreign-key>
-    <foreign-key id="147" parent="34" name="FK_pd09fhlelgup4s1pqjycrcolk">
-      <ColNames>user_subscriptionList_SubscriptionId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>subscription</RefTableName>
-      <RefColNames>SubscriptionId</RefColNames>
-    </foreign-key>
-    <column id="148" parent="35" name="topic_userList_UserId">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="149" parent="35" name="user_topicList_TopicId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="150" parent="35" name="FK_c6svyk4jw59ewctkia3ma5k3d">
-      <ColNames>topic_userList_UserId</ColNames>
-    </index>
-    <index id="151" parent="35" name="FK_cdkov2slcskc5jiap34ynyeaa">
-      <ColNames>user_topicList_TopicId</ColNames>
-    </index>
-    <foreign-key id="152" parent="35" name="FK_c6svyk4jw59ewctkia3ma5k3d">
-      <ColNames>topic_userList_UserId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>user</RefTableName>
-      <RefColNames>UserId</RefColNames>
-    </foreign-key>
-    <foreign-key id="153" parent="35" name="FK_cdkov2slcskc5jiap34ynyeaa">
-      <ColNames>user_topicList_TopicId</ColNames>
-      <RefSchemaName>linksharingdb</RefSchemaName>
-      <RefTableName>topic</RefTableName>
-      <RefColNames>TopicId</RefColNames>
     </foreign-key>
   </database-model>
 </dataSource>

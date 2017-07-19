@@ -23,11 +23,32 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     HttpServletRequest request;
-    public boolean saveOrUpdateUser(User user) {
+
+    public boolean saveOrUpdateUser(User user, HttpServletRequest request, HttpServletResponse response) {
         user.setAdmin(false);
         user.setActive(true);
+        if (!userDao.isEmailExists(user.getEmail())) {
 
-        return userDao.saveOrUpdateUser(user);
+
+            if (!userDao.isUserNameExists(user.getUserName())) {
+                if (userDao.saveOrUpdateUser(user)) {
+                    return true;
+                }
+                else {
+                    request.setAttribute("regError", "Registration is Unsuccessful");
+                    return false;
+                }
+            }
+            else {
+                request.setAttribute("regError","Username is Already Taken" );
+                return false;
+            }
+
+        }
+        else{
+            request.setAttribute("regError", "You are Already Registered");
+            return false;
+        }
     }
 
     public User getUserDetails( String userName) {
@@ -49,5 +70,21 @@ public class UserServiceImpl implements UserService {
         else {
             return false;
         }
+    }
+
+    @Override
+    public boolean isEmailExists(String email) {
+        if(userDao.isEmailExists(email))
+        return  true;
+        else
+            return false;
+    }
+
+    @Override
+    public boolean isUserNameExists(String userName) {
+        if(userDao.isUserNameExists(userName))
+            return  true;
+        else
+            return false;
     }
 }

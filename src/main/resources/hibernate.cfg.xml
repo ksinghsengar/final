@@ -24,5 +24,6 @@
         <mapping class="com.model.ResourceRating"></mapping>
         <mapping class="com.model.LinkResource"></mapping>
         <mapping class="com.model.DocumentResource"></mapping>
+        <mapping class="com.model.OTP"></mapping>
     </session-factory>
 </hibernate-configuration>

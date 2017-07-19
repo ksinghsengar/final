@@ -147,4 +147,39 @@ public class UserDaoImpl implements UserDao{
     public Map<Resource, ResourceRating> getListOfResourcesRated(String userName) {
         return null;
     }
+
+    @Override
+    public boolean isEmailExists(String email) {
+        boolean empty;
+        SessionFactory sessionFactory = SessionFactoryUtil.getSessionFactory();
+        Session session= sessionFactory.openSession();
+        session.beginTransaction();
+        String query = "from User where email = ?";
+        Query query1 =  session.createQuery(query)
+                .setString(0,email);
+        empty = query1.list().isEmpty();
+        session.getTransaction().commit();
+        session.close();
+        if(empty)
+        return false;
+        else
+            return true;
+    }
+
+    public boolean isUserNameExists(String userName) {
+        boolean empty;
+        SessionFactory sessionFactory = SessionFactoryUtil.getSessionFactory();
+        Session session= sessionFactory.openSession();
+        session.beginTransaction();
+        String query = "from User where userName = ?";
+        Query query1 =  session.createQuery(query)
+                .setString(0,userName);
+        empty = query1.list().isEmpty();
+        session.getTransaction().commit();
+        session.close();
+        if(empty)
+            return false;
+        else
+            return true;
+    }
 }

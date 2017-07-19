@@ -123,7 +123,7 @@
 
 
                     <div class="form-group">
-                        <a href="" class="forgot_password">Forgrot Password</a>
+                        <a href="/forgotPassword" class="forgot_password">Forgrot Password</a>
                         <div class="input-group col-md-offset-5 col-md-6">
                             <button type="submit"> Login</button>
                         </div>
@@ -139,7 +139,7 @@
                 Register
             </div>
 
-            <h5 style="color: red; text-align: center;"> ${error}</h5>
+            <h5 style="color: red; text-align: center;"> ${regError}</h5>
 
             <div class="panel-body">
                 <form:form action="/register" method="POST" enctype="multipart/form-data" >
@@ -199,6 +199,18 @@
     </div>
 
 </div>
+
+<script type="text/javascript">
+    $(".register button").on('click',function(e) {
+        var pass = $('input[name = "password"]').val();
+        var cpassword = $('input[name = "confirmPassword"]').val();
+        if(pass != cpassword) {
+            alert("Password and Confirm Password do not match");
+            e.preventDefault();
+        }
+    });
+
+</script>
 </body>
 
 </html>

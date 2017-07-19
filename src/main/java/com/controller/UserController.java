@@ -26,12 +26,12 @@ public class UserController {
     HttpSession session;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void register(@ModelAttribute("User") User user,
+    public ModelAndView register(@ModelAttribute("User") User user,
                          @RequestParam("image") MultipartFile file,
                          BindingResult result,
                          HttpServletRequest request,
                          HttpServletResponse response
-                         ) throws IOException {
+                         ) throws IOException, ServletException {
         ModelAndView modelAndView;
         if(!file.isEmpty()){
              user.setPhoto(file.getBytes());
@@ -40,14 +40,19 @@ public class UserController {
             System.out.println("BINDING Error");
             response.sendRedirect("/index");
         }
-        if (userService.saveOrUpdateUser(user)) {
+
+        if (userService.saveOrUpdateUser(user,request,response)) {
             modelAndView = new ModelAndView("dashboard");
-
-        } else {
-            response.sendRedirect("/index");
-            request.setAttribute("error","Registration is Unsuccessful");
         }
+        else {
 
+            modelAndView = new ModelAndView("home");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index");
+            requestDispatcher.include(request,response);
+
+
+        }
+      return modelAndView;
     }
 
 

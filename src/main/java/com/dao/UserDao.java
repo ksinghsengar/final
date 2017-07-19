@@ -21,6 +21,8 @@ public interface UserDao {
     public  List<ReadingItem> getListOfReadItems(String userName);
     public  Integer numberOfResourcesRated(String userName);
     public  Map<Resource,ResourceRating> getListOfResourcesRated(String userName);
+    public boolean isEmailExists(String email);
+    public boolean isUserNameExists(String userName);
 
 
 

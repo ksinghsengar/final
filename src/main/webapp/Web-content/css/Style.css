@@ -90,3 +90,7 @@
     height: 25px !important;
     width: 200px;
 }
+
+.verification{
+    width: inherit!important;
+}

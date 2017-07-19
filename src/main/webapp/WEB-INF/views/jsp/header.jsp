@@ -19,21 +19,3 @@
     </div>
 </div>
 
-<script>
-    $(".register button").on('click',function(e) {
-        var pass = $('input[name = "password"]').val();
-        var cpassword = $('input[name = "confirmPassword"]').val();
-        if(pass != cpassword) {
-            /*$("div.alert-warning").append("Password and Confirm Password do not match.");
-             $("div.alert-warning").css("font-size","20px");
-             $("div.alert-warning").css("display","inline");*/
-            alert("Password and Confirm Password do not match");
-            e.preventDefault();
-        }
-    });
-
-
-
-
-
-</script>
