@@ -9,6 +9,8 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.persistence.*;
 import java.util.*;
 
+import static javax.swing.text.StyleConstants.Size;
+
 @Entity
 public class User {
 
@@ -25,7 +27,7 @@ public class User {
     private String lastName;
     @Lob
     @Column(columnDefinition = "mediumblob")
-    private Byte[] photo;
+    private byte[] photo;
     @Column(nullable = false)
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean admin;
@@ -102,11 +104,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Byte[] getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Byte[] photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 

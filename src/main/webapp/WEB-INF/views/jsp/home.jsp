@@ -1,14 +1,7 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page import="java.util.Calendar" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/Style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <title>
         Home
@@ -18,25 +11,6 @@
 
 <body>
 <div class="container">
-    <!-- page header-->
-    <div class="col-md-12 well well-sm">
-
-        <div class="col-md-4">
-            <h3><a href="">Link Sharing</a> </h3>
-        </div>
-
-
-        <div class=" col-md-offset-6 col-md-2">
-            <div class="input-group">
-                    <span class="input-group addon">
-                    <span class="glyphicon glyphicon-search"></span></span>
-                <input type="search" class="form-control" placeholder="Search" />
-            </div>
-        </div>
-    </div>
-
-
-
 
     <div class="col-md-7">
         <!-- blog1-->
@@ -130,10 +104,10 @@
             <div class="panel-heading">
                 Login
             </div>
-
-
+            <h5 style="color: red; text-align: center;"> ${error}</h5>
             <div class="panel-body">
-                <form:form modelAttribute="User" method="post" action="/login">
+                <form:form  method="post" action="/login">
+
                     <div class="form-group">
                         <label  class="contol-label col-md-5">Email/Username*</label>
                         <div class="input-group col-md-6">
@@ -165,9 +139,10 @@
                 Register
             </div>
 
+            <h5 style="color: red; text-align: center;"> ${error}</h5>
 
             <div class="panel-body">
-                <form:form action="/register" method="POST"  >
+                <form:form action="/register" method="POST" enctype="multipart/form-data" >
                     <div class="form-group">
                         <label class="contol-label col-md-5">First name*</label>
                         <div class="input-group col-md-6">
@@ -204,15 +179,15 @@
                             <input type="password" class="form-control"  name="confirmPassword" required>
                         </div>
                     </div>
-                    <%--<div class="form-group">
+                    <div class="form-group">
                         <label for="photo" class="contol-label col-md-5">Photo</label>
                         <div class="input-group col-md-3">
-                            <input type="file" class="" placeholder="" id="photo" name="photo">
+                            <input type="file" class="" placeholder="" id="photo" name="image">
                         </div>
-                    </div>--%>
+                    </div>
 
                     <div class="form-group">
-                        <div class="input-group col-md-offset-5 col-md-6">
+                        <div class="input-group register col-md-offset-5 col-md-6">
                             <button type="submit"> Register</button>
                         </div>
                     </div>

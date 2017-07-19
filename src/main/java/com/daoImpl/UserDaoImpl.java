@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import javax.jws.soap.SOAPBinding;
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class UserDaoImpl implements UserDao{
         System.out.println("user1 "+user.getUserName());
         System.out.println("active:"+user.getActive());
         System.out.println("admin: "+user.getAdmin());
-        session.save(user);
+        System.out.println("Save User: "+session.save(user));
         System.out.println("saved ");
         session.getTransaction().commit();
         session.close();
@@ -47,13 +48,12 @@ public class UserDaoImpl implements UserDao{
         Session session= sessionFactory.openSession();
         User user = new User();
         session.beginTransaction();
-        String query = "from User where userName  = ?";
-        Query query1 =  session.createQuery(query).setString(0,username);
+        String query = "from User where userName  = ? or email = ?";
+        Query query1 =  session.createQuery(query)
+                .setString(0,username)
+                .setString(1,username);
         user  = (User) query1.uniqueResult();
         System.out.println("User Details: "+user);
-//        Criteria criteria = session.createCriteria(User.class);
-//        criteria.add(Restrictions.eq("userName",username));
-//        user = (User)criteria.uniqueResult();
         session.getTransaction().commit();
         session.close();
         System.out.println("User in getUserDetails: "+user);
@@ -85,7 +85,17 @@ public class UserDaoImpl implements UserDao{
                 .setString(0, loginUser)
                 .setString(1, loginUser)
                 .setString(2, loginPassword);
-        return query.list().isEmpty();
+        System.out.println();
+         boolean empty = query.list().isEmpty();
+         if(!empty){
+             System.out.println(" not of empty "+!empty);
+             return true;
+         }
+         else {
+             System.out.println("loginUser " + loginUser + " loginPassword: " + loginPassword);
+             System.out.println("empty  " + empty);
+             return false;
+         }
     }
 
     @Override

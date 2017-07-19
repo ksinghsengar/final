@@ -14,4 +14,8 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <error-page>
+        <location>/WEB-INF/errors</location>
+    </error-page>
 </web-app>

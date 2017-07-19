@@ -2,7 +2,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:beans="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
@@ -12,21 +12,30 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com"></context:component-scan>
+    <context:component-scan base-package="com"/>
     <!--<aop:aspectj-autoproxy/>
     <bean class="com.aspect.DaoAspect"></bean>
    -->
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" >
-            <value>/WEB-INF/views/jsp/</value>
-        </property>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+        <!--<property name="prefix" value="/WEB-INF/views/jsp/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+    </bean>
 
-        <property name="suffix">
-            <value>.jsp</value>
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/layout.xml</value>
+            </list>
         </property>
     </bean>
 
+    <bean id="multipartResolver"
+                class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
+        <!-- setting maximum upload size -->
+        <property name="maxUploadSize" value="100000" />
+
+    </bean>
     <!--<mvc:vcom.controllerller path="/" view-name="index"/>-->
     <mvc:resources mapping="/resources/**" location="/Web-content/"></mvc:resources>
     <mvc:annotation-driven></mvc:annotation-driven>

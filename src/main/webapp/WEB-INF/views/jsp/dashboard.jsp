@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.model.User" %><%--
   Created by IntelliJ IDEA.
   User: krishan
   Date: 7/16/2017
@@ -12,5 +12,35 @@
 </head>
 <body>
 hello from dashboard
+<form action="/logout">
+<button type="submit" >Logout</button>
+
+</form>
+
+        <% if(request.getSession(false) != null){
+             User user = (User) session.getAttribute("User");
+             if(user.getPhoto() != null)
+
+        %>
+                    <div class="panel-body col-md-5">
+
+                        <div class="col-md-3">
+                            <% if(user.getPhoto() != null){%>
+                            <img src="/getimage?userName=<%= user.getUserName()%>" alt="">
+                            <%}
+                            else{%>
+                            <span class="glyphicon glyphicon-user"></span>
+                            <%}%>
+                        </div>
+
+                        <div class="col-md-9">
+                            <b class=""><%= user.getFirstName()+" "+user.getLastName()%></b>
+                            <span class="text-muted">&commat;<%= user.getUserName()%></span>
+                            <span class="text-muted col-md-6">Subscriptions</span>
+                            <span class="text-muted col-md-6">Topics</span>
+                        </div>
+                    </div>
+        <%}%>
+
 </body>
 </html>
