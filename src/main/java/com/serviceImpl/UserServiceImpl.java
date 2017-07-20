@@ -28,10 +28,13 @@ public class UserServiceImpl implements UserService {
         user.setAdmin(false);
         user.setActive(true);
         if (!userDao.isEmailExists(user.getEmail())) {
-
+            System.out.println("if Email exists");
 
             if (!userDao.isUserNameExists(user.getUserName())) {
+                System.out.println("If user name exists");
+
                 if (userDao.saveOrUpdateUser(user)) {
+                    System.out.println("if user saved");
                     return true;
                 }
                 else {
@@ -52,7 +55,10 @@ public class UserServiceImpl implements UserService {
     }
 
     public User getUserDetails( String userName) {
-        return userDao.getUserDetails(userName);
+        System.out.println("In get user Details");
+         User user = userDao.getUserDetails(userName);
+        System.out.println("User "+user);
+        return user;
     }
 
     public boolean deleteUser(String userName) {
@@ -62,14 +68,22 @@ public class UserServiceImpl implements UserService {
     public boolean validateUser(String loginUser, String loginPassword, HttpServletRequest request) {
         System.out.println(" in validated user sevice ");
             if (userDao.validateUser(loginUser, loginPassword)) {
-                System.out.println(" validated " + userDao.validateUser(loginUser, loginPassword));
-                return true;
+                User user = userDao.getUserDetails(loginUser);
+                if (user != null) {
 
+                    System.out.println(" validated " + userDao.validateUser(loginUser, loginPassword));
+                    return true;
+
+                }
+                else{
+                    request.setAttribute("error","Something Unexpected Occur");
+                    return false;
+                }
             }
-
-        else {
-            return false;
-        }
+            else {
+                request.setAttribute("error", "Username or Password is Incorrect");
+                return false;
+            }
     }
 
     @Override

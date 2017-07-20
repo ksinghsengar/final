@@ -27,38 +27,36 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView register(@ModelAttribute("User") User user,
-                         @RequestParam("image") MultipartFile file,
-                         BindingResult result,
-                         HttpServletRequest request,
-                         HttpServletResponse response
-                         ) throws IOException, ServletException {
-        ModelAndView modelAndView;
-        if(!file.isEmpty()){
-             user.setPhoto(file.getBytes());
+                                 @RequestParam("image") MultipartFile file,
+                                 BindingResult result,
+                                 HttpServletRequest request,
+                                 HttpServletResponse response
+    ) throws IOException, ServletException {
+
+        if (!file.isEmpty()) {
+            user.setPhoto(file.getBytes());
         }
         if (result.hasErrors()) {
             System.out.println("BINDING Error");
             response.sendRedirect("/index");
         }
-
-        if (userService.saveOrUpdateUser(user,request,response)) {
-            modelAndView = new ModelAndView("dashboard");
-        }
-        else {
-
+        if (userService.saveOrUpdateUser(user, request, response)) {
+            System.out.println("In user controller after save");
+            HttpSession session = request.getSession();
+            session.setAttribute("User",user);
+           ModelAndView view = new ModelAndView("dashboard");
+           return view;
+        } else {
+            ModelAndView modelAndView;
             modelAndView = new ModelAndView("home");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index");
-            requestDispatcher.include(request,response);
-
-
+            return modelAndView;
         }
-      return modelAndView;
     }
 
 
     @RequestMapping(value = "/getuser/{name}")
     @ResponseBody
-    public ModelAndView getUserDetails(@PathVariable("name")  String userName, HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView getUserDetails(@PathVariable("name") String userName, HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView("dashboard");
         System.out.println("users" + userService.getUserDetails(userName));
 //        modelAndView.addObject("User", userService.getUserDetails(userName));
@@ -66,40 +64,40 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login")
-    public ModelAndView validateUser(@RequestParam("loginUser")String name,
-                                     @RequestParam("loginPassword")String password,
-                                     HttpServletRequest request,
-                                     HttpServletResponse response)
-                                        throws ServletException, IOException {
-        ModelAndView modelAndView;
+    public ModelAndView validateUser(@RequestParam("loginUser") String name,
+                                     @RequestParam("loginPassword") String password,
+                                     HttpServletRequest request)
+            throws ServletException, IOException {
+
         System.out.println(" Controller started: ");
-        System.out.println("Session value: "+request.getSession(false));
-        if (userService.validateUser(name, password,request)) {
+        if (userService.validateUser(name, password, request)) {
+            System.out.println("get user details " + userService.getUserDetails(name));
             User user = userService.getUserDetails(name);
-            System.out.println("User  in controller: "+user);
-            HttpSession session = request.getSession();
-
-                System.out.println("Session created: ");
+            System.out.println("User  in controller: " + user);
+                session = request.getSession(true);
                 session.setAttribute("User", user);
-                modelAndView = new ModelAndView("dashboard");
+                System.out.println("Session created: ");
+
+                ModelAndView modelAndView = new ModelAndView("dashboard");
+                return modelAndView;
 
             }
-         else{
-//            modelAndView = new ModelAndView("home");
-            response.sendRedirect("/index");
-            request.setAttribute("error","Username or Password is Incorrect");
-            modelAndView = new ModelAndView("home");
+            else {
+                session.invalidate();
+                ModelAndView modelAndView = new ModelAndView("home");
+                return modelAndView;
             }
+        }
+
+
+    @RequestMapping(value = "/deleteuser/{name}")
+    @ResponseBody
+    public ModelAndView deleteUser(@PathVariable("name") String userName, HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView("dashboard");
+        System.out.println("users" + userService.deleteUser(userName));
+        modelAndView.addObject("Users", userService.deleteUser(userName));
         return modelAndView;
     }
-@RequestMapping(value = "/deleteuser/{name}")
-@ResponseBody
-public ModelAndView deleteUser(@PathVariable("name")  String userName,HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView modelAndView = new ModelAndView("dashboard");
-    System.out.println("users" + userService.deleteUser(userName));
-    modelAndView.addObject("Users", userService.deleteUser(userName));
-    return modelAndView;
-}
 
 
 }

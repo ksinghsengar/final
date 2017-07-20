@@ -6,12 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="topic.jsp"%>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-hello from dashboard
+<%= session.getAttribute("message")%>
 <form action="/logout">
 <button type="submit" >Logout</button>
 
@@ -19,6 +20,7 @@ hello from dashboard
 
         <% if(request.getSession(false) != null){
              User user = (User) session.getAttribute("User");
+            System.out.println("user in jsp"+user);
              if(user.getPhoto() != null)
 
         %>
@@ -40,7 +42,10 @@ hello from dashboard
                             <span class="text-muted col-md-6">Topics</span>
                         </div>
                     </div>
-        <%}%>
+
+
+
+<%}%>
 
 </body>
 </html>

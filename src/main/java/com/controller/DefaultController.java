@@ -9,16 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class DefaultController {
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public ModelAndView display(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView("home");
         return modelAndView;
     }
 
-    @RequestMapping("/topic")
-    public ModelAndView displaytopic(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView modelAndView = new ModelAndView("topic");
-        return modelAndView;
-    }
+
 
 }

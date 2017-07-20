@@ -20,12 +20,13 @@
     <title>Topic</title>
 </head>
 <body>
-hello from topic
 
-<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add Topic</button>
+
+<%--<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#topicModal">Add Topic</button>--%>
+<%--
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="topicModal" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -39,7 +40,7 @@ hello from topic
                 <form method="post" action="javascript:void(0)">
                     <div class="form-group">
                         <label>Topic Name</label>
-                        <input type="text" id="topicName" class="form-control" name="topicName" aria-describedby="emailHelp" placeholder="Enter topic name" required>
+                        <input type="text" id="topicName" class="form-control col-md-5" name="topicName"  placeholder="Enter topic name" required>
                     </div>
                     <div class="form-group">
                         <label>Visibility</label>
@@ -51,6 +52,111 @@ hello from topic
                     <button id="submitForm" type="submit" class="btn btn-primary">Submit</button>
                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
                 </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+--%>
+
+
+<div id="topicModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="javascript:void(0)">
+                    <div class="form-group">
+                        <label>Topic Name</label>
+                        <input type="text" id="topicName" class="form-control col-md-5" name="name"  placeholder="Enter topic name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Visibility</label>
+                        <select id="topicvisibility" class="form-control" name="visibility">
+                            <option>PUBLIC</option>
+                            <option>PRIVATE</option>
+                        </select>
+                    </div>
+                    <button id="submitForm" type="submit"  class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div id="envelopeModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div id="linkModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div id="fileModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
 

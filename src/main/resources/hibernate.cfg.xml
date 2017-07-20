@@ -25,5 +25,6 @@
         <mapping class="com.model.LinkResource"></mapping>
         <mapping class="com.model.DocumentResource"></mapping>
         <mapping class="com.model.OTP"></mapping>
+        <mapping class="com.model.EmailVerification"></mapping>
     </session-factory>
 </hibernate-configuration>

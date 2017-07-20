@@ -15,17 +15,16 @@ public class LogoutController {
 
 
     @RequestMapping("/logout")
-    public void logout( HttpServletRequest request,HttpServletResponse response) throws IOException {
-        ModelAndView modelAndView =null;
+    public ModelAndView logout( HttpServletRequest request,HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
         if(session != null){
             session.invalidate();
-            response.getWriter().write("You have successfully Logged out!!");
-            response.sendRedirect("/index");
-
+            ModelAndView modelAndView = new ModelAndView("home");
+            return modelAndView;
         }
         else{
-            response.sendRedirect("/");
+            ModelAndView modelAndView = new ModelAndView("/");
+            return modelAndView;
         }
 
     }

@@ -94,3 +94,8 @@
 .verification{
     width: inherit!important;
 }
+
+.modal-content,.modal-body,.modal-header{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}

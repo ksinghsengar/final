@@ -27,10 +27,10 @@ public class Topic {
     private Visibility visibility;
 
     @OneToMany(mappedBy = "topic")
-    private Set<Resource> topic_resourceList = new HashSet<>() ;
+    private Set<Resource> resourceList = new HashSet<>() ;
 
     @OneToMany(mappedBy = "topic")
-    private Set<Subscription> topic_subscriptionList = new HashSet<>();
+    private Set<Subscription> subscriptionList = new HashSet<>();
 
 
     public enum Visibility{
@@ -85,20 +85,20 @@ public class Topic {
         this.visibility = visibility;
     }
 
-    public Set<Resource> getTopic_resourceList() {
-        return topic_resourceList;
+    public Set<Resource> getResourceList() {
+        return resourceList;
     }
 
-    public void setTopic_resourceList(Set<Resource> topic_resourceList) {
-        this.topic_resourceList = topic_resourceList;
+    public void setResourceList(Set<Resource> resourceList) {
+        this.resourceList = resourceList;
     }
 
-    public Set<Subscription> getTopic_subscriptionList() {
-        return topic_subscriptionList;
+    public Set<Subscription> getSubscriptionList() {
+        return subscriptionList;
     }
 
-    public void setTopic_subscriptionList(Set<Subscription> topic_subscriptionList) {
-        this.topic_subscriptionList = topic_subscriptionList;
+    public void setSubscriptionList(Set<Subscription> subscriptionList) {
+        this.subscriptionList = subscriptionList;
     }
 
     @Override
@@ -110,8 +110,8 @@ public class Topic {
                 ", datecreated=" + datecreated +
                 ", lastupdated=" + lastupdated +
                 ", visibility=" + visibility +
-                ", topic_resourceList=" + topic_resourceList +
-                ", topic_subscriptionList=" + topic_subscriptionList +
+                ", resourceList=" + resourceList +
+                ", subscriptionList=" + subscriptionList +
                 '}';
     }
 }

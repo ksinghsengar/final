@@ -44,15 +44,20 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public User getUserDetails(String username) {
+        System.out.println("In get User Details Dao");
         SessionFactory sessionFactory = SessionFactoryUtil.getSessionFactory();
         Session session= sessionFactory.openSession();
-        User user = new User();
+        User user;
+        System.out.println("after User");
         session.beginTransaction();
         String query = "from User where userName  = ? or email = ?";
         Query query1 =  session.createQuery(query)
                 .setString(0,username)
                 .setString(1,username);
-        user  = (User) query1.uniqueResult();
+        System.out.println("query"+ query1.getQueryString());
+        System.out.println("query1.uniqueResult()"+query1.list());
+        user = (User) query1.uniqueResult();
+        System.out.println("user in dao: "+user);
         System.out.println("User Details: "+user);
         session.getTransaction().commit();
         session.close();
@@ -89,67 +94,23 @@ public class UserDaoImpl implements UserDao{
          boolean empty = query.list().isEmpty();
          if(!empty){
              System.out.println(" not of empty "+!empty);
+             session.getTransaction().commit();
+             session.close();
              return true;
          }
          else {
              System.out.println("loginUser " + loginUser + " loginPassword: " + loginPassword);
              System.out.println("empty  " + empty);
+             session.getTransaction().commit();
+             session.close();
              return false;
          }
-    }
 
-    @Override
-    public Integer numberOfSubscription(String userName) {
-        return null;
-    }
-
-    @Override
-    public List<Topic> getListOfTopicSubscribed(String userName) {
-        return null;
-    }
-
-    @Override
-    public Integer numberOfTopicsCreated(String userName) {
-        return null;
-    }
-
-    @Override
-    public List<Topic> getListOfTopicCreated(String userName) {
-        return null;
-    }
-
-    @Override
-    public Integer numberOfResourcesCreated(String userName) {
-        return null;
-    }
-
-    @Override
-    public List<Resource> getListOfResourceCreated(String userName) {
-        return null;
-    }
-
-    @Override
-    public Integer numberOfReadItems(String userName) {
-        return null;
-    }
-
-    @Override
-    public List<ReadingItem> getListOfReadItems(String userName) {
-        return null;
-    }
-
-    @Override
-    public Integer numberOfResourcesRated(String userName) {
-        return null;
-    }
-
-    @Override
-    public Map<Resource, ResourceRating> getListOfResourcesRated(String userName) {
-        return null;
     }
 
     @Override
     public boolean isEmailExists(String email) {
+        System.out.println("In is email exists dao"+ email);
         boolean empty;
         SessionFactory sessionFactory = SessionFactoryUtil.getSessionFactory();
         Session session= sessionFactory.openSession();
@@ -158,12 +119,16 @@ public class UserDaoImpl implements UserDao{
         Query query1 =  session.createQuery(query)
                 .setString(0,email);
         empty = query1.list().isEmpty();
+        System.out.println("is email exists "+empty);
         session.getTransaction().commit();
         session.close();
-        if(empty)
-        return false;
-        else
+        if(empty) {
+            System.out.println("no similar email");
+            return false;
+        }        else {
+            System.out.println("similar email exists");
             return true;
+        }
     }
 
     public boolean isUserNameExists(String userName) {

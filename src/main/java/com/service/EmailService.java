@@ -1,8 +1,7 @@
 package com.service;
 
-import org.springframework.stereotype.Service;
-
-
 public interface EmailService {
-    public boolean sendMail(String email);
+  public String randomAlphaNumeric(int count);
+  public boolean sendMail(String email);
+  public boolean saveVerificationString(String str, String email);
 }
