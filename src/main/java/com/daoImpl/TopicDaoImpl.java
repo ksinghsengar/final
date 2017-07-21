@@ -28,7 +28,6 @@ public class TopicDaoImpl implements TopicDao{
         sessionFactory = SessionFactoryUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        System.out.println("topic "+topic);
         session.save(topic);
         System.out.println("saved ");
         session.getTransaction().commit();
@@ -42,7 +41,7 @@ public class TopicDaoImpl implements TopicDao{
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         String query  = "delete from Topic where name = ?";
-        Query query1 = session.createQuery(query).setString(0,name);
+        Query query1 = session.createSQLQuery(query).setString(0,name);
         query1.executeUpdate();
         session.getTransaction().commit();
         session.close();

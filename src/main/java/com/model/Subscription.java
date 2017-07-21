@@ -75,8 +75,6 @@ public class Subscription {
     public String toString() {
         return "Subscription{" +
                 "id=" + id +
-                ", topic=" + topic +
-                ", user=" + user +
                 ", seriousness=" + seriousness +
                 ", dateCreated=" + dateCreated +
                 '}';

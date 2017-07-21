@@ -26,23 +26,19 @@ public class Topic {
     @Enumerated(EnumType.STRING)
     private Visibility visibility;
 
-    @OneToMany(mappedBy = "topic")
+   /* @OneToMany(mappedBy = "topic")
     private Set<Resource> resourceList = new HashSet<>() ;
 
     @OneToMany(mappedBy = "topic")
     private Set<Subscription> subscriptionList = new HashSet<>();
+*/
+    public Topic() {
+    }
+
 
 
     public enum Visibility{
         PUBLIC,PRIVATE;
-    }
-     public Topic(){
-
-    }
-    public Topic(User user, Topic topic) {
-        this.name = topic.getName();
-        this.createdBy = user;
-        this.visibility = topic.getVisibility();
     }
 
     public int getId() {
@@ -93,22 +89,6 @@ public class Topic {
         this.visibility = visibility;
     }
 
-    public Set<Resource> getResourceList() {
-        return resourceList;
-    }
-
-    public void setResourceList(Set<Resource> resourceList) {
-        this.resourceList = resourceList;
-    }
-
-    public Set<Subscription> getSubscriptionList() {
-        return subscriptionList;
-    }
-
-    public void setSubscriptionList(Set<Subscription> subscriptionList) {
-        this.subscriptionList = subscriptionList;
-    }
-
     @Override
     public String toString() {
         return "Topic{" +
@@ -118,8 +98,6 @@ public class Topic {
                 ", datecreated=" + datecreated +
                 ", lastupdated=" + lastupdated +
                 ", visibility=" + visibility +
-                ", resourceList=" + resourceList +
-                ", subscriptionList=" + subscriptionList +
                 '}';
     }
 }

@@ -59,8 +59,6 @@ public class ReadingItem{
     public String toString() {
         return "ReadingItem{" +
                 "id=" + id +
-                ", user=" + user +
-                ", resource=" + resource +
                 ", isRead=" + isRead +
                 '}';
     }

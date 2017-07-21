@@ -41,14 +41,14 @@ public class User {
     @UpdateTimestamp
     private Date lastUpdated;
 
-    @OneToMany(mappedBy = "createdBy")
+    /*@OneToMany(mappedBy = "createdBy")
     Set<Topic> topicSet = new HashSet<>();
 
     @OneToMany(mappedBy ="user" )
     Set<Subscription> subscriptionSet = new HashSet<>();
 
     @OneToMany(mappedBy = "createdBy")
-    Set <Resource> resourceSet = new HashSet<>();
+    Set <Resource> resourceSet = new HashSet<>();*/
 
 
     public int getId() {
@@ -138,6 +138,7 @@ public class User {
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
+/*
 
     public Set<Topic> getTopicSet() {
         return topicSet;
@@ -162,6 +163,7 @@ public class User {
     public void setResourceSet(Set<Resource> resourceSet) {
         this.resourceSet = resourceSet;
     }
+*/
 
     @Override
     public String toString() {
@@ -177,9 +179,6 @@ public class User {
                 ", active=" + active +
                 ", dateCreated=" + dateCreated +
                 ", lastUpdated=" + lastUpdated +
-                ", topicSet=" + topicSet +
-                ", subscriptionSet=" + subscriptionSet +
-                ", resourceSet=" + resourceSet +
                 '}';
     }
 }

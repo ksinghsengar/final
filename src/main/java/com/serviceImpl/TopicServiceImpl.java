@@ -34,9 +34,8 @@ public class TopicServiceImpl implements TopicService {
         if(!topicDao.isTopicExistsForUser(user,topic.getName())) {
             System.out.println("Topic does not exists for user");
             System.out.println("topic in service"+ topic);
-            Topic topic1 = new Topic(user,topic);
-
-            if (topicDao.addTopic(topic1)) {
+            topic.setCreatedBy(user);
+            if (topicDao.addTopic(topic)) {
                 System.out.println("in add topic service after adding topic");
                 return true;
             }

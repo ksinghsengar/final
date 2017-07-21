@@ -87,8 +87,6 @@ public class Resource {
         return "Resource{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
-                ", createdBy=" + createdBy +
-                ", topic=" + topic +
                 ", dateCreated=" + dateCreated +
                 ", lastUpdated=" + lastUpdated +
                 '}';

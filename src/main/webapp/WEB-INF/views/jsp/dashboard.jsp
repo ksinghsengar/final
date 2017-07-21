@@ -14,7 +14,6 @@
     <script src="${pageContext.request.contextPath}/resources/js/Script.js"></script>
 </head>
 <body>
-<%= session.getAttribute("message")%>
 
 
         <% if(request.getSession(false) != null){

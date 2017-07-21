@@ -22,15 +22,17 @@ public class TopicController {
 
     @RequestMapping(value = "/addTopic",method = RequestMethod.POST)
     public @ResponseBody
-     String addTopic(@ModelAttribute Topic topicDto,
+     String addTopic(@ModelAttribute Topic topic,
                                  HttpServletRequest request){
         HttpSession httpSession =  request.getSession(false);
         User user  = (User)  httpSession.getAttribute("User");
-       if( topicService.addTopic(user,topicDto)){
+
+       if( topicService.addTopic(user,topic)){
            System.out.println("Topic Added successfully");
        }
 
       return "{}";
+
     }
 
     @RequestMapping("/deleteTopic")

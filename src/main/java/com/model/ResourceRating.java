@@ -47,7 +47,6 @@ public class ResourceRating {
     public String toString() {
         return "ResourceRating{" +
                 "id=" + id +
-                ", resource=" + resource +
                 ", score=" + score +
                 '}';
     }

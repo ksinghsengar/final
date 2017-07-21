@@ -9,6 +9,7 @@ $(document).ready(function () {
                 visibility: $("#topicvisibility").val()
             },
             success: function (response) {
+                
                 console.log("hello");
             },
             error: function (error) {

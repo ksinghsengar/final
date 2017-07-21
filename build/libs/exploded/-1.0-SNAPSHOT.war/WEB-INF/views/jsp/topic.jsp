@@ -9,15 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/Style.css">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="${pageContext.request.contextPath}/resources/js/Modal.js"></script>
     <title>Topic</title>
 </head>
 <body>
@@ -49,7 +41,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button id="submitForm" type="button" class="btn btn-primary">Submit</button>
+                <button id="submitForm" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -89,7 +81,7 @@
 
             </div>
             <div class="modal-footer">
-                <button id="sendInvite" type="button" class="btn btn-primary">Invite</button>
+                <button id="sendInvite" type="button" class="btn btn-primary" data-dismiss="modal">Invite</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -132,7 +124,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="submitLink">Share</button>
+                <button type="button" class="btn btn-primary" id="submitLink" data-dismiss="modal">Share</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -172,7 +164,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="submitDocument">Share</button>
+                <button type="button" class="btn btn-primary" id="submitDocument" data-dismiss="modal">Share</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
