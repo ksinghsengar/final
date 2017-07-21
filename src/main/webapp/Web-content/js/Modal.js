@@ -9,10 +9,11 @@ $(document).ready(function () {
                 visibility: $("#topicvisibility").val()
             },
             success: function (response) {
+                
                 console.log("hello");
             },
             error: function (error) {
-                console.log(" Error: " + error);
+                console.log(" Error: " + JSON.stringify(error));
 
             }
         });

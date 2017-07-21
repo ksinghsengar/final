@@ -44,17 +44,12 @@ public class User {
     @OneToMany(mappedBy = "createdBy")
     Set<Topic> topicSet = new HashSet<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy ="user" )
     Set<Subscription> subscriptionSet = new HashSet<>();
 
     @OneToMany(mappedBy = "createdBy")
     Set <Resource> resourceSet = new HashSet<>();
 
-    @OneToOne
-    private  ResourceRating resourceRating;
-
-    @OneToOne
-    private ReadingItem readingItem;
 
     public int getId() {
         return id;
@@ -168,22 +163,6 @@ public class User {
         this.resourceSet = resourceSet;
     }
 
-    public ResourceRating getResourceRating() {
-        return resourceRating;
-    }
-
-    public void setResourceRating(ResourceRating resourceRating) {
-        this.resourceRating = resourceRating;
-    }
-
-    public ReadingItem getReadingItem() {
-        return readingItem;
-    }
-
-    public void setReadingItem(ReadingItem readingItem) {
-        this.readingItem = readingItem;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -201,8 +180,6 @@ public class User {
                 ", topicSet=" + topicSet +
                 ", subscriptionSet=" + subscriptionSet +
                 ", resourceSet=" + resourceSet +
-                ", resourceRating=" + resourceRating +
-                ", readingItem=" + readingItem +
                 '}';
     }
 }

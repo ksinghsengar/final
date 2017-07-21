@@ -12,10 +12,10 @@ public class ResourceRating {
     private Integer id;
 
    @OneToOne
-   private User user;
+   private Resource resource;
 
    @OneToOne
-   private Resource resource;
+   private User user;
 
     private Integer score;
 
@@ -25,14 +25,6 @@ public class ResourceRating {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Resource getResource() {
@@ -55,7 +47,6 @@ public class ResourceRating {
     public String toString() {
         return "ResourceRating{" +
                 "id=" + id +
-                ", user=" + user +
                 ", resource=" + resource +
                 ", score=" + score +
                 '}';

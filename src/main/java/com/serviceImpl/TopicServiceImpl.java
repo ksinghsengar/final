@@ -9,7 +9,9 @@ import com.service.TopicService;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Set;
@@ -27,14 +29,28 @@ public class TopicServiceImpl implements TopicService {
     UserService userService;
 
     @Override
-    public boolean addTopic(Topic topic) {
-        if(topicDao.addTopic(topic)) {
-            return true;
+    public boolean addTopic(User user, Topic topic) {
+       System.out.println("In add Topic service");
+        if(!topicDao.isTopicExistsForUser(user,topic.getName())) {
+            System.out.println("Topic does not exists for user");
+            System.out.println("topic in service"+ topic);
+            Topic topic1 = new Topic(user,topic);
+
+            if (topicDao.addTopic(topic1)) {
+                System.out.println("in add topic service after adding topic");
+                return true;
+            }
+            else{
+                System.out.println("not succes in topic service");
+              return false;
+            }
         }
         else{
+            System.out.println("topic name exists");
             return  false;
         }
     }
+
 
     @Override
     public boolean deleteTopic(String name) {
@@ -60,6 +76,9 @@ public class TopicServiceImpl implements TopicService {
         else{
             return  false;
         }
+
+
+
     }
 
     @Override

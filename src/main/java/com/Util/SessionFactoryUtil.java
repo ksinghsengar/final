@@ -25,7 +25,7 @@ public class SessionFactoryUtil {
 
 
         public static SessionFactory getSessionFactory() {
-            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+          SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
             return sessionFactory;
         }
 

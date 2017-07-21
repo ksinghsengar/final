@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import javax.servlet.http.HttpSession;
 import java.util.Set;
 
 /**
@@ -20,15 +21,15 @@ import java.util.Set;
 public class TopicDaoImpl implements TopicDao{
 
     SessionFactory sessionFactory;
-    User user;
+
     @Override
     public boolean addTopic(Topic topic) {
+        System.out.println("In addTopic dao");
         sessionFactory = SessionFactoryUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        user.getTopicSet().add(topic);
-        System.out.println("Save Topic: "+session.save(topic));
-        session.save(user);
+        System.out.println("topic "+topic);
+        session.save(topic);
         System.out.println("saved ");
         session.getTransaction().commit();
         session.close();
@@ -40,7 +41,7 @@ public class TopicDaoImpl implements TopicDao{
         sessionFactory = SessionFactoryUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        String query  = "from Topic where name = ?";
+        String query  = "delete from Topic where name = ?";
         Query query1 = session.createQuery(query).setString(0,name);
         query1.executeUpdate();
         session.getTransaction().commit();
@@ -63,6 +64,8 @@ public class TopicDaoImpl implements TopicDao{
     }
 
     public boolean isTopicExistsForUser(User user,String topicName) {
+        boolean empty;
+        System.out.println("In topic Da0 exists for user");
         sessionFactory = SessionFactoryUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -70,10 +73,17 @@ public class TopicDaoImpl implements TopicDao{
         Query query1 = session.createQuery(query)
                 .setInteger(0,user.getId())
                 .setString(1,topicName);
+        empty = query1.list().isEmpty();
         session.getTransaction().commit();
         session.close();
         System.out.println("After session");
-        return true;
+        if(empty){
+        return false;
+        }
+        else{
+            return true;
+        }
+
     }
 
     public boolean changeVisibility(User user,String topicName,Topic.Visibility visibility) {
@@ -87,16 +97,11 @@ public class TopicDaoImpl implements TopicDao{
                 .setString(1,topicName)
                 .setInteger(2,user.getId());
         query1.executeUpdate();
-         empty = query1.list().isEmpty();
+        System.out.println("After changing visibility");
         session.getTransaction().commit();
         session.close();
         System.out.println("After session");
-        if(!empty) {
-            return true;
-        }
-        else{
-            return false;
-        }
+        return true;
     }
 
     public Set<Topic> browseAllPublicTopic() {

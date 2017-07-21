@@ -3,28 +3,22 @@ package com.daoImpl;
 import com.Util.SessionFactoryUtil;
 import com.dao.UserDao;
 import com.model.*;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import javax.jws.soap.SOAPBinding;
-import java.io.File;
-import java.util.List;
-import java.util.Map;
+
 
 @Repository
 public class UserDaoImpl implements UserDao{
 
-    SessionFactory sessionFactory;
     @Override
     public boolean saveOrUpdateUser(User user) {
         System.out.println("inside userDao Impl");
         System.out.println("SessionFactory ");
         System.out.println("Session ");
-        sessionFactory = SessionFactoryUtil.getSessionFactory();
+        SessionFactory  sessionFactory = SessionFactoryUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         System.out.println("Session begin");
@@ -58,7 +52,6 @@ public class UserDaoImpl implements UserDao{
         System.out.println("query1.uniqueResult()"+query1.list());
         user = (User) query1.uniqueResult();
         System.out.println("user in dao: "+user);
-        System.out.println("User Details: "+user);
         session.getTransaction().commit();
         session.close();
         System.out.println("User in getUserDetails: "+user);
@@ -82,7 +75,7 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public boolean validateUser(String loginUser, String loginPassword){
-        sessionFactory = SessionFactoryUtil.getSessionFactory();
+         SessionFactory sessionFactory = SessionFactoryUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         String hql = "from User where (userName = ?  or email = ?) and password = ? ";

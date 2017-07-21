@@ -7,16 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="topic.jsp"%>
+
 <html>
 <head>
     <title>Title</title>
+    <script src="${pageContext.request.contextPath}/resources/js/Script.js"></script>
 </head>
 <body>
 <%= session.getAttribute("message")%>
-<form action="/logout">
-<button type="submit" >Logout</button>
 
-</form>
 
         <% if(request.getSession(false) != null){
              User user = (User) session.getAttribute("User");

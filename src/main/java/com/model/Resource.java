@@ -18,10 +18,10 @@ public class Resource {
 
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User createdBy;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Topic topic;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -32,11 +32,7 @@ public class Resource {
     @UpdateTimestamp
     private Date lastUpdated;
 
-    @OneToOne
-    private ResourceRating resourceRating;
 
-    @OneToOne
-    private ReadingItem readingItem;
 
     public Integer getId() {
         return id;
@@ -86,22 +82,6 @@ public class Resource {
         this.lastUpdated = lastUpdated;
     }
 
-    public ResourceRating getResourceRating() {
-        return resourceRating;
-    }
-
-    public void setResourceRating(ResourceRating resourceRating) {
-        this.resourceRating = resourceRating;
-    }
-
-    public ReadingItem getReadingItem() {
-        return readingItem;
-    }
-
-    public void setReadingItem(ReadingItem readingItem) {
-        this.readingItem = readingItem;
-    }
-
     @Override
     public String toString() {
         return "Resource{" +
@@ -111,8 +91,6 @@ public class Resource {
                 ", topic=" + topic +
                 ", dateCreated=" + dateCreated +
                 ", lastUpdated=" + lastUpdated +
-                ", resourceRating=" + resourceRating +
-                ", readingItem=" + readingItem +
                 '}';
     }
 }

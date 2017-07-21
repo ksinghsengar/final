@@ -22,8 +22,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-    HttpServletRequest request;
-    HttpSession session;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView register(@ModelAttribute("User") User user,
@@ -38,12 +36,12 @@ public class UserController {
         }
         if (result.hasErrors()) {
             System.out.println("BINDING Error");
-            response.sendRedirect("/index");
+            response.sendRedirect("/");
         }
         if (userService.saveOrUpdateUser(user, request, response)) {
             System.out.println("In user controller after save");
-            HttpSession session = request.getSession();
-            session.setAttribute("User",user);
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("User",user);
            ModelAndView view = new ModelAndView("dashboard");
            return view;
         } else {
@@ -59,11 +57,10 @@ public class UserController {
     public ModelAndView getUserDetails(@PathVariable("name") String userName, HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView("dashboard");
         System.out.println("users" + userService.getUserDetails(userName));
-//        modelAndView.addObject("User", userService.getUserDetails(userName));
         return modelAndView;
     }
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/login" , method =  RequestMethod.POST)
     public ModelAndView validateUser(@RequestParam("loginUser") String name,
                                      @RequestParam("loginPassword") String password,
                                      HttpServletRequest request)
@@ -71,19 +68,11 @@ public class UserController {
 
         System.out.println(" Controller started: ");
         if (userService.validateUser(name, password, request)) {
-            System.out.println("get user details " + userService.getUserDetails(name));
-            User user = userService.getUserDetails(name);
-            System.out.println("User  in controller: " + user);
-                session = request.getSession(true);
-                session.setAttribute("User", user);
-                System.out.println("Session created: ");
-
                 ModelAndView modelAndView = new ModelAndView("dashboard");
                 return modelAndView;
 
             }
             else {
-                session.invalidate();
                 ModelAndView modelAndView = new ModelAndView("home");
                 return modelAndView;
             }

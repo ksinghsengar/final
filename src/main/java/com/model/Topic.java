@@ -15,7 +15,7 @@ public class Topic {
     @Column(name = "TopicId")
     private int id;
     private String name;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User createdBy;
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
@@ -35,6 +35,14 @@ public class Topic {
 
     public enum Visibility{
         PUBLIC,PRIVATE;
+    }
+     public Topic(){
+
+    }
+    public Topic(User user, Topic topic) {
+        this.name = topic.getName();
+        this.createdBy = user;
+        this.visibility = topic.getVisibility();
     }
 
     public int getId() {
