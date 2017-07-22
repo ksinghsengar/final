@@ -17,6 +17,11 @@ public class EmailVerification {
     String verificationString;
     String email;
 
+    public EmailVerification(String verificationString, String email) {
+        this.verificationString = verificationString;
+        this.email = email;
+    }
+
     public Integer getId() {
         return id;
     }

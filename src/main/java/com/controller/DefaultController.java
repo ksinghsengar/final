@@ -1,6 +1,7 @@
 package com.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,5 +17,27 @@ public class DefaultController {
     }
 
 
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleAllException(Exception ex) {
 
+        ModelAndView model = new ModelAndView("error");
+        model.addObject("errMsg", "Exception Occurred");
+
+
+        return model;
+
+    }
+/*
+
+    @ExceptionHandler(CustomGenericException.class)
+    public ModelAndView handleCustomException(CustomGenericException ex) {
+
+        ModelAndView model = new ModelAndView("error");
+        model.addObject("errCode", ex.getErrCode());
+        model.addObject("errMsg", ex.getErrMsg());
+
+        return model;
+
+    }
+*/
 }

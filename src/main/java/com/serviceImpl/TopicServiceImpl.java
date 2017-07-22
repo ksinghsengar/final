@@ -29,22 +29,25 @@ public class TopicServiceImpl implements TopicService {
     UserService userService;
 
     @Override
-    public boolean addTopic(User user, Topic topic) {
+    public boolean addTopic(User user, Topic topic,HttpServletRequest request) {
        System.out.println("In add Topic service");
         if(!topicDao.isTopicExistsForUser(user,topic.getName())) {
             System.out.println("Topic does not exists for user");
             System.out.println("topic in service"+ topic);
             topic.setCreatedBy(user);
             if (topicDao.addTopic(topic)) {
+                request.setAttribute("message","Topic Added Successfully");
                 System.out.println("in add topic service after adding topic");
                 return true;
             }
             else{
+                request.setAttribute("message","Sorry!! Topic is not Added .. Try Again");
                 System.out.println("not succes in topic service");
               return false;
             }
         }
         else{
+            request.setAttribute("message","Topic Name Must be Unique....Choose another name");
             System.out.println("topic name exists");
             return  false;
         }

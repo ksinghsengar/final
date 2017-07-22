@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="topic.jsp"%>
+<%@ include file="dashboardHeader.jsp"%>
 
 <html>
 <head>
@@ -14,7 +14,10 @@
     <script src="${pageContext.request.contextPath}/resources/js/Script.js"></script>
 </head>
 <body>
+<form action="/logout">
+<button type="submit" >Logout</button>
 
+</form>
 
         <% if(request.getSession(false) != null){
              User user = (User) session.getAttribute("User");

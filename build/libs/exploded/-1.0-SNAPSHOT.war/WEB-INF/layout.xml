@@ -24,12 +24,17 @@
 
     <definition name="topic" extends="DefaultTemplate">
         <put-attribute name="body"
-                       value="/WEB-INF/views/jsp/topic.jsp" />
+                       value="/WEB-INF/views/jsp/dashboardHeader.jsp" />
     </definition>
 
     <definition name="emailVerification" extends="DefaultTemplate">
         <put-attribute name="body"
                        value="/WEB-INF/views/jsp/emailVerification.jsp" />
+    </definition>
+
+    <definition name="error" extends="DefaultTemplate">
+        <put-attribute name="body"
+                       value="/WEB-INF/views/jsp/errors.jsp" />
     </definition>
 
 </tiles-definitions>

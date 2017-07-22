@@ -9,7 +9,7 @@ import java.util.Set;
 
 public interface TopicService {
 
-    public boolean addTopic(User user,Topic topic);
+    public boolean addTopic(User user,Topic topic,HttpServletRequest request);
     public boolean deleteTopic(String name);
     public Set<Topic> findAllTopicOfUser(String userName);
     public boolean isTopicExistsForUser(User user, String topicName);

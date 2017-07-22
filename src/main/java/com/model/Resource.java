@@ -32,7 +32,8 @@ public class Resource {
     @UpdateTimestamp
     private Date lastUpdated;
 
-
+    public Resource() {
+    }
 
     public Integer getId() {
         return id;

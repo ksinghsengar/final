@@ -26,12 +26,9 @@ public class TopicController {
                                  HttpServletRequest request){
         HttpSession httpSession =  request.getSession(false);
         User user  = (User)  httpSession.getAttribute("User");
-
-       if( topicService.addTopic(user,topic)){
-           System.out.println("Topic Added successfully");
-       }
-
-      return "{}";
+        topicService.addTopic(user,topic,request);
+        request.setAttribute("message","Topic Added Successfully");
+          return "Topic added Successfully";
 
     }
 

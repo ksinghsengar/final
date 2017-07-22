@@ -31,11 +31,7 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public boolean saveVerificationString(String str, String email) {
-        EmailVerification emailVerification = new EmailVerification() ;
-        emailVerification.setEmail(email);
-        System.out.println(" email"+ emailVerification.getEmail());
-        emailVerification.setVerificationString(str);
-        System.out.println("str "+emailVerification.getVerificationString());
+        EmailVerification emailVerification = new EmailVerification(str,email);
         System.out.println("emailverifiaction "+emailVerification);
         if(emailVerificationDao.saveVerificationString(emailVerification))
         {
@@ -51,9 +47,8 @@ public class EmailServiceImpl implements EmailService {
     public void sendMail(String email)
 
     String msg = "<html>" + "<head>" + "</head>" + "<body>" +
-            "Hi " +
-            ",<br><br>You are Invited To subscribe following Topic." + topic + "<br><br>Please Follow the link to Subscribe the topic<b></b><br>" +
-            "<a href='http://localhost:8080/'>Click Here to Register First</a><br><br>Thanks<br>LinkSharing" +
+            "Hi" +
+            "<a href='http://localhost:8080/'><br>Thanks<br>LinkSharing" +
             "</body>" + "</html>";
     String recipientAddress = email;
     String subject = "Invitation";

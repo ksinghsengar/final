@@ -10,6 +10,9 @@ public class LinkResource extends Resource {
 
     private String url;
 
+    public LinkResource() {
+    }
+
     public String getUrl() {
         return url;
     }
